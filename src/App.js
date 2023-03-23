@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 
 function LikeButton(){
@@ -28,7 +27,7 @@ function RosemaryFacts(){
   const factsList = facts.map(fact =>
     <li style={{
       listStyle: "none",
-      fontWeight: fact.title == "Scientific Name:" ? "bold" : "normal"
+      fontWeight: fact.title === "Scientific Name:" ? "bold" : "normal"
     }}
     >{fact.title} {fact.desc}</li>);
   return ( 
