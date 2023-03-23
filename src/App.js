@@ -12,7 +12,7 @@ function LikeButton(){
 function Rosemary(){
   return(
     <>
-      <img src="RosemarySprig.jpg"/>
+      <img src="RosemarySprig.jpg" alt="Image of rosemary sprig"/>
     </>
   );
 }
