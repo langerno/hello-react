@@ -26,7 +26,10 @@ const facts = [
 
 function RosemaryFacts(){
   const factsList = facts.map(fact =>
-    <li style={{fontWeight: fact.title == "Scientific Name:" ? "bold" : "normal"}}
+    <li style={{
+      listStyle: "none",
+      fontWeight: fact.title == "Scientific Name:" ? "bold" : "normal"
+    }}
     >{fact.title} {fact.desc}</li>);
   return ( 
   <>
