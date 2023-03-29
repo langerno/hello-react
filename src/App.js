@@ -28,12 +28,18 @@ function Rosemary(){
 function Library() {
   const [myBooks, setMyBooks] = useState([]);
   async function getBooks() {
-    let { data: books, error } = await supabase.from('books').select('*');
+    let { data: books } = await supabase.from('books').select('*');
     setMyBooks(books);
   }
   getBooks();
   return(
     <table>
+        <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Genre</th>
+        <th>ISBN</th>
+      </tr>
     {
       myBooks.map(b => (
         <tr>
