@@ -1,3 +1,4 @@
+import { supabase } from './supabaseClient'
 import './App.css';
 
 function LikeButton(){
