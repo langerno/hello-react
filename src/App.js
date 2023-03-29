@@ -1,11 +1,18 @@
-import { supabase } from './supabaseClient'
+import { useState } from 'react';
+import { supabase } from './supabaseClient';
 import './App.css';
 
+
 function LikeButton(){
+  const [count, setCount] = useState(0);
+  function doLike(){
+    setCount(count + 1);
+  }
   return(
     <>
       <h3>Press this button if you like Rosemary!</h3>
-      <button>Like</button>
+      <button onClick={doLike}>Like</button>
+      <h4>Likes : {count}</h4>
     </>
   );
 }
@@ -16,6 +23,29 @@ function Rosemary(){
       <img src="RosemarySprig.jpg" alt="rosemary sprig"></img>
     </>
   );
+}
+
+function Library() {
+  const [myBooks, setMyBooks] = useState([]);
+  async function getBooks() {
+    let { data: books, error } = await supabase.from('books').select('*');
+    setMyBooks(books);
+  }
+  getBooks();
+  return(
+    <table>
+    {
+      myBooks.map(b => (
+        <tr>
+          <td>{b.title}</td>
+          <td>{b.author}</td>
+          <td>{b.Genre}</td>
+          <td>{b.ISBN}</td>
+        </tr>
+      ))
+    }
+    </table>
+  )
 }
 
 const facts = [
@@ -45,6 +75,7 @@ function App() {
         <Rosemary/>
         <RosemaryFacts/>
         <LikeButton/>
+        <Library/>
       </header>
     </div>
   );
